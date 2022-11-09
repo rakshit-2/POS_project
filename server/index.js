@@ -26,3 +26,26 @@ const db=mysql.createPool({
     password:db_pass,
     database:db_database,
 });
+
+
+
+app.get("/",(req,res)=>{
+    const apiTestGet='select * from test_pos;';
+    db.query(apiTestGet,(err,result)=>{
+        res.send(result);
+    })
+});
+
+
+
+
+
+
+
+const port=process.env.PORT || 5000;
+app.listen(port,()=>{
+    console.log(`listning on port ${port}`);
+});
+
+
+// npm run devStart
